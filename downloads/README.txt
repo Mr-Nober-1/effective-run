@@ -1,0 +1,36 @@
+﻿HourlyAlarm 시간 설정 추가판
+
+사용법
+1. HourlyAlarm_TimeSettings.exe를 Windows에서 실행합니다.
+2. 기존 분 입력(0~59)은 그대로 사용할 수 있습니다.
+3. 입력 칸 바로 아래의 시간 설정 버튼을 눌러 시(0~23), 분(0~59)을 지정합니다.
+4. 시간 설정 창에서 확인 후 분 입력 창에서도 확인을 누르면 적용됩니다.
+5. 지정한 시각에 매일 알립니다. 매시 알림 사용을 누르면 기존 방식으로 돌아갑니다.
+6. 메인 화면의 시간 변경에서도 동일한 설정 창을 열 수 있습니다.
+7. 취소는 변경을 적용하지 않습니다. 기존처럼 설정은 프로그램 종료 후 저장되지 않습니다.
+
+복구 범위
+원본 EXE의 Python 3.14 실행 바이트코드를 추출하여 보존했습니다.
+원본 .py 텍스트를 완전히 디컴파일한 결과가 아닙니다.
+hourly_alarm.py는 복구한 바이트코드와 편집 가능한 추가 기능을 포함한 실행용 소스입니다.
+settings_extension.py는 시간 설정 기능을 편집할 수 있는 소스입니다.
+hourly_alarm.marshal은 추출된 원본 바이트코드이며 Python 3.14 전용입니다.
+disassembly.txt는 원본의 역어셈블 결과입니다.
+알림 문구, 색상, 소리, 미리보기, 트레이, 60초 자동 닫기는 원본 실행 코드를 사용합니다.
+
+실행용 소스
+Python 3.14에서 python hourly_alarm.py로 실행합니다.
+Tkinter가 필요하며 트레이에는 pystray와 Pillow가 필요합니다.
+Windows 공식 Python 설치 시 Tcl/Tk 옵션을 포함하세요.
+
+다시 EXE 만들기
+Python 3.14에서 원본 HourlyAlarm.exe와 아래 명령을 사용합니다.
+python rebuild.py 원본경로/HourlyAlarm.exe 결과경로/HourlyAlarm_TimeSettings.exe
+원본 체크섬을 확인하고 기존 Windows 런타임 및 의존성을 유지한 채 앱 진입점만 교체합니다.
+새 외부 패키지 의존성을 추가할 경우 별도 Windows PyInstaller 빌드가 필요합니다.
+
+검증
+Linux 가상 화면에서 실제 Tkinter 창을 열어 16개 테스트를 통과했습니다.
+입력 범위, 취소, 버튼 위치, 중첩 설정 창, 매시 방식 복귀, 알림 화면,
+하루 경계/윤년, 중복 알림 방지, EXE 의존성 보존을 검증했습니다.
+Windows 환경에서 EXE를 실제 실행한 검증은 하지 못했습니다.
